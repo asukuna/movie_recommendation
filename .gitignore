@@ -1,0 +1,6 @@
+.python-version
+.venv
+.DS_Store
+src
+datasets/kaggle/credits.csv
+datasets/kaggle/ratings.csv
