@@ -1,0 +1,63 @@
+Was ist ein sinnvolles Vorgehen beim Datenscreening?
+1: Gesamtüberblick verschaffen:
+Was sehen wir?
+Nicht alle Posts haben einen Text (Body)
+Nur ca. 6300 Posts haben eine akzeptierte Antwort
+Es gibt TypeIDs für Fragen und Antworten
+2: Was ist mit den Posts ohne Body?
+Wir sehen, dass die Posts ohne Text eine TypenID haben, die weder Frage noch Antwort entspricht. Wir können sie also einfach als 
+Fehlstelle filtern und haben das Problem somit verstanden.
+3: Fragen mit Antworten kombinieren
+Wir können mit dem oben gezeigten Code die Fragen den passenden Antworten über die IDs zuordnen. Eine Überprüfung 
+von einigen einzelnen Datenpunkten zeigt, dass die Zuordnung plausibel ist.
+4: Weiterer, einfacher Plauibilitäts-check mit der Anzahl von Antworten pro Frage
+Wir können sehen, dass die meisten Fragen eine Antwort haben, aber nur ca. die Hälfte hat eine akzeptierte Antwort. Das 
+könnte evt. ein gutes Label für die Fragenqualität sein.
+5: Verteilung der "Score" Werte
+Die "Score" Werte (Upvotes pro Frage) könnte auch als Label verwendet werden. Entweder binär (kleiner oder größer Median) 
+oder kontinuierlich.
+6: Suche nach Feature Kandidaten
+Können wir hieran erkennen , ob die Länge der Fragen ein Feature für unser Modell sein könnte? => Nein, anhand der bloßen 
+Verteilung gibt es keine Möglichkeit
+Wir müssen die Verteilungen für zwei verschiedene Labelgruppen untersuchen: Hier wurden zwei Fragengruppen erstellt 
+anhand ihrer Score (größer oder kleiner Score-Median) und dann ihre Verteilung im gleichen Plot dargestellt
+Hier können wir erkennen, dass Fragen mit höherem Score tendenziell länger sind. Das spricht dafür, dass die Fragenlänge 
+ein eventueller Feature-Kanditat ist.
+Auf diese Weise können wir weiter auf Feature und Label Suche gehen.
+Mögliche Korrelationen über das Plotten von geplanten Features mit Labels prüfen:
+==> es besteht eine sichtbare Korrelation zwischen der Anzahl an Antworten und dem Score der Frage
+Wir prüfen weiter, wie die Anzahl an Antworten mit der Fragen Score zusammenhängt:
+Fragen mit hohen Scores (über dem Median) bekommen also mehr Antworten. Die Anzahl an Antworten wäre also auch ein gutes 
+Label, wir entscheiden uns aber für die Score. Sie ist direkter auf die Fragenqualität passend und ist auch feingranularer
+Als Feature können wir die Anzahl an Antworten nicht verwenden, da dies zur Zeit der Anwendung nicht verfügbar ist (dieses 
+Feature muss beim Training ignoriert werden!)
+Effiziente Data Exploration
+Viel mehr als Mittelwerte und Histogramme sind auf der Suche nach Features und Labels oft nicht hilfreich
+Effiziente Methoden um tiefer in die Daten zu sehen sind:
+Einzelne Datenpunkte betrachten
+Clustering
+Clustering: Abstand zwischen Datenpunkten messen und diejenigen Punkten mit geringeren Abständen zueinander in 
+gleiche Gruppen einordnen
+Da Clustering auf dem Abstand der Datenpunkte beruht, ist die Auswahl der numerischen Beschreibung der 
+Datenpunkte essenziell für das Ergebnis
+Diese Numerik kann auf potenziellen Features, Labels, oder einer Kombination aus beidem beruhen
+Grundsätzliche Fragen beim Clustern:
+Wie viele Cluster identifizieren wir in unserem Datensatz?
+Wirken die einzelnen Cluster wirklich verschieden oder täuschen wir uns aufgrund einer falschen Auswahl der 
+gewählten Numerik?
+Sind manche Cluster dichter besiedelt als andere? (Falls ja, könnte das Modell mit dieser Numerik-Auswahl in 
+den weniger dichten Bereichen Probleme haben)
+Wirken manche Cluster, als wären sie besonders schwierig oder einfach zu modellieren? (Diese besonderen 
+Cluster für die spätere Messung der Modellperformance merken und gesondert betrachten)
+Wichtig: Clustering arbeitet mit Vektoren (mehrdimensionale Darstellung eines Datenpunkts)
+==> Datenpunkte müssen vor dem Clustern Vektorisiert werden!
+
+Aufgabe dat Exploration:
+Untersucht euren Datensatz nun im Detail: findet sinnvolle features und Labels. Klärt durch eine statistische Betrachtung, ob sich 
+geplante Features und Labels sinnhaft anwenden lassen mit den vorliegenden Daten. Braucht ihr mehr Daten, oder müsst ihr 
+eventuell andere Features wählen?
+Findet Korrelationen und klärt, welche Daten euch zum Zeitpunkt des Modellabrufs in der späteren Anwendung zur Verfügung 
+stehen.
+Erstellt eine Übersichts-Liste mit euren Features und Labels, sowie eine kurze Begründung zur jeweiligen Auswahl als 
+zusammenfassende Übersicht.
+Dieser Teil sollte ca. 2-3 Seiten in eurer Dokumentation einnehmen.

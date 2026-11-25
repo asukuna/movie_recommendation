@@ -1,0 +1,47 @@
+User Experience
+Wir wollen anhand der ersten Pipeline untersuchen, ob die präsentierten Ergebnisse für das
+Produktziel und die User Experience nützlich sind. Hierbei geht es nicht um deren Genauigkeit,
+sondern um die Art der Darstellung.
+Modell Performance
+Neben der User Experience muss auch die Modell Performance untersucht werden. Mit der ersten
+Pipeline können wir ableiten, welche der vorausgewählten Metriken hierzu Sinn ergeben und auf das
+Produktziel tatsächlich einzahlen. Auch können wir ableiten, ob die Metriken nochmals abgeändert
+werden müssen.
+Den Bottleneck finden
+Ziel jeder Iteration ist es die nächste Aufgabe zu definieren und den derzeitigen Bottleneck zu
+identifizieren. Sinnvoll ist es zu definieren, ob man die nächste Iteration auf der Produkt- oder der
+Modellseite durchführen will. Hierzu zwei Beispiele für das bessere Verständnis.
+Beispiel 1:
+Angenommen wir haben ein MVP entwickelt, dass die Rejection Rate für wissenschaftliche Paper
+vorhersagen kann. Die UserInnen können ihr Paper hierfür im Modell untersuchen und erhalten eine
+Prozentzahl für die Chance einer Zurückweisung ihres Papers. Wir haben festgestellt, dass diese
+Ausgabeform nicht zum größtmöglichen Nutzen des Endprodukts führt.
+==> In welchem Bereich sollten wir in der nächsten Iteration arbeiten und was sollte
+verbessert werden?
+Beispiel 2:
+Angenommen wir haben ein Tool für die Bewertung der Kreditwürdigkeit von KundInnen entwickelt
+und stellen fest, dass die Bewertungen bei konstanten Eingabeparametern stark variiert.
+==> In welchem Bereich sollten wir in der nächsten Iteration arbeiten und was sollte
+verbessert werden?
+Den Bottleneck finden
+Ziel jeder Iteration ist es die nächste Aufgabe zu definieren und den derzeitigen Bottleneck zu
+identifizieren. Sinnvoll ist es zu definieren, ob man die nächste Iteration auf der Produkt- oder
+der Modellseite durchführen will. Hierzu zwei Beispiele für das bessere Verständnis.
+Beispiel 1:
+==> Es sollte hier an der Produktseite gearbeitet werden, da eine Verbesserung der
+Modellperformance nicht den derzeitigen Bottleneck, nämlich die User Experience
+verbessern würde. Sinnvoll wäre hier die Erweiterung der Ausgabe um
+Verbesserungsvorschläge für die UserInnen, um das Risiko der Zurückweisung zu
+verringern.
+Beispiel 2:
+==> Hier sollte an der Modellseite in der nächsten Iteration gearbeitet werden, da
+auch eine andere Darstellungsform der Ergebnisse nicht zu einer Verbesserung der
+Produktnutzbarkeit führen würde. Zunächst muss der Vorhersagefehler durch die
+verzerrten Trainingsdaten behoben werden.
+
+Aufgabe:
+Nutzt nun eure erste minimale Inference Pipeline, um erste Ergebnisse zu generieren und diese aus Userlnnen und Produktzielsicht
+zu bewerten. Klärt, ob die Ausgegebenen Daten sinnhaft sind, ihr effizient Ergebnisse generieren könnt und ob eure Heuristiken
+grundsätzlich plausibel sind. Identifiziert Bottlenecks hinsichtlich der Erfüllung eures Produktziels und euren Qualitätsszenarien.
+Dokumentiert eure Erkenntnisse, am besten mit Screenshots und leitet mögliche Handlungen ab. Dieser Teil sollte 1-2 Seiten in
+eurer Dokumentation einnehmen.

@@ -1,0 +1,137 @@
+Wie fängt man an?
+Ein guter Start ist die Erstellung eines simplen Modells um damit den Datensatz kennenzulernen, wertvolle Ergebnisse zu 
+erstellen und damit ein dem Produktziel nützliches Modell zu entwickeln.
+Der gegensätzliche Ansatz, ein perfektes komplexes Modell von Grund auf zu entwickeln zeigt sich in der Praxis als wenig 
+effektiv: Machine Learning Entwicklung ist ein iterativer Prozess!
+Der schnellste Weg Fortschritte zu machen, ist zu sehen wie das Modell scheitert. Je schneller dies geschieht, desto mehr 
+Fortschritt macht die Entwicklung.
+Welche Daten benötigt man?
+Auch diese Frage kann oft erst im Verlauf der Entwicklung geklärt werden. Es bietet sich an, einen leicht verfügbaren 
+Datensatz zu verwenden, welcher vermutlich ausreichend gelabelte enthält und für das Training des Modells eine hilfreiche 
+Korrelation enthält. Ob dies dann der Fall ist, zeigt sich in den ersten Iterationen mit einem simplen Modell.
+Für den Frageneditor wählen wir einen frei verfügbaren Data Dump (kompletter Datensatz) von Stack Exchange, einer Q&A 
+Webseite. Dieser beinhaltet die Fragen sowie deren upvotes und Metadaten zum Post. Hiermit erhalten wir also keine stark 
+gelabelten Daten, aber zumindest schwach gelabelte, womit ein erstes Training eines Modells möglich sein sollte.
+Es kann damit begonnen werden, die upvotes einer Frage ohne ihre Metadaten als schwach gelabelte Daten für das Training 
+zu verwenden. Zwar spielen Metadaten hierbei sicherlich eine Rolle. Um diese Einflüsse zu verringern, kann man den 
+Datensatz für den Anfang auf bestimmte Communities oder Themen begrenzen.
+Wichtig zu merken: Zu Beginn eines ML Projekts kann kaum gesagt werden, wie weit die Daten und das Modell das 
+Produktziel erreichen können! Dies muss iterativ erarbeitet werden!
+Mit einer einfachen Pipeline beginnen
+Die Performance eines simplen Modells gibt uns die besten Indizien, welche Aufgaben gelöst werden müssen. In fast allen ML 
+Problemstellungen werden zwei separate Pipelines benötigt:
+Training Pipeline
+Bevor unser Modell Ergebnis produzieren kann, müssen wir es trainieren. Für gewöhnlich werden in dieser Pipeline mehrere 
+Modelle gleichzeitig trainiert und validiert mit einem zurückgehaltenen Validierungs-Datensatz.
+Inference (Schlussfolgerungs) Pipeline
+Dies ist die Pipeline, wie die spätere Modellierung in Produktion ablaufen soll. Diese Pipeline starten mit dem User input, geht 
+über in das Pre Processing, die Modellierung und liefert schließlich nach einem post-processing Schritt ein Ergebnis
+Die folgende Abbildung veranschaulicht die beiden Pipeline Typen:
+Training:
+Inference:
+Datensatz
+Daten
+berenigen
+PreProcessing
+Modell
+trainieren
+Evaluation Speichern
+Eingabe
+Eingabe
+aufbereiten
+Modell
+Durchlauf
+Ergebnisse
+aufbereiten
+Ergebnis
+PreProcessing
+Die Trainings Pipeline für unseren Frageneditor bauen wir wie folgt auf:
+Daten laden
+Daten bereinigen, indem wir unvollständige Datenpunkte entfernen und wenn nötig fehlende Werte einfügen
+Vorbereiten und formatieren der Daten, dass diese von einem Modell verstanden werden können
+Einen Teil der Daten als Validierungsdatensatz abspalten
+Ein Modell auf einem teil des Datensatzes trainieren und ein trainiertes MOdell, sowie zusammenfassende Statiskien 
+ausgeben
+Die Inference Pipeline bauen wir wie folgt auf:
+Ein treiniertes MOdell laden und es im Zwischenspeicher behalten
+Daten bereinigen (gleich wie beim Training)
+Relevante Zusatzinformationen sammeln
+Ein Beispiel durch das Modell schicken
+Post Processing, um das Ergebnis für den/die UserIn aufzubereiten
+Eine grafische Darstellung dieser Pipelines für die Dokumentation unserer Entwicklungsarbeit ist unerlässlich:
+1.
+2.
+3.
+4.
+5.
+1.
+2.
+3.
+4.
+5.
+Training:
+Inference:
+Datensatz Laden Säubern pre processing Daten teilen Training
+Eingabedaten Laden
+Modellierung Ergebnis
+Säubern
+Evaluation Speichern
+pre processing
+Modell Laden
+Zusammengefasst:
+Entwicklung von Machine Learning Applikationen ist zeitaufwändig, wir wollen deshalb Risiken verringern und die wichtigsten 
+Arbeitspakete identifizieren.
+Wir wollen das Produktziel ausgehend von einem minimalen Prototypen erreichen, der immer weiter verbessert und 
+vergrößert wird:
+Erfolg
+Zeit
+UNREALISTISCH
+Erfolg
+Zeit
+REALISTISCH
+==> Erster Schritt: Mit der Inference-Pipeline und simpler Heuristik starten, Trainings-Pipeline danach angehen!
+
+Aufgabenstellung:
+Erstellt zwei Flow Charts für die Trainings- und die Inference-Pipeline eures Projekts. Beschreibt die beiden Pipelines konkret in 
+Textform. Geht hierbei auf die verschiedenen Schritte einzeln ein. Nennt bereits bekannte Details, wie zum Beispiel verwendete 
+Datensätze, Schnittstellen, Metriken, geplante features, Datenqualitäten (und damit zusammenhängende Entscheidungen).
+Die Aufgabenlösung dient als direkter Input für eure Dokumentation, ihr solltet hier inc. Grafik mind. eine Seite füllen.
+
+Beispiel:Um ein erstes MVP (Minimal Viable Product) zu entwickelnum damit itarativ arbeiten zu können, benötigen wir für den 
+Frageneditor 4 Funktionen, welche wir in Python realisieren werden:
+input_text = parse_arguments():
+Wir müssen eine Usereingabe ermöglichen und sicherstellen, dass mit dem eingegebenen String gearbeitet werden kann.
+processed = clean_input(input_text):
+Um dies sicherzustellen, werden wir nur ASCII Zeichen zulassen. Dies schränkt die Möglichkeiten der Usereingabe nicht 
+sonderlich ein und ermöglicht uns eine klarere Möglichkeit Abzuschätzen, was der Input beinhaltet.
+tokenized_sentences = preprocess_input(processed):
+Um Metriken auf Wortebene zu erheben, müssen wir Wörter aus Sätzen erkennen. Im Themengebiet des Natural Language 
+Processing heißt dies "Tokenization".
+Tokenization ist kein banaler Vorgang. Simple Regeln für Wort und Satztrennung funktionieren nicht in realistischen Sätzen:
+"Hr. O'Neill's sucht Moritz' Laptop in der Lotto-Annahmestelle; leider Vergebens."
+Um nicht alle grammatikalischen Grundregeln und verschiedene Bedeutung von Apostrophen und Punkten selbst definieren 
+zu müssen, verwenden wir eine open source Bibliothek hierfür: "nltk".
+suggestions = get_suggestions(tokenized_sentences):
+Als letztes schreiben wir einige Regeln, welche dem/der UserIn helfen könnten, besseren Input zu schreiben. Wir wollen für 
+unseren Prototyp simple Heuristiken verwenden und noch kein Machine Learning. Wir werden hierzu die Flesch-ReadingEase-Score verwenden:
+"Der Flesch-Reading-Ease-Score ist ein quantitativer Messwert, der angibt, wie gut lesbar ein Text ist. Er wird als Zahl 
+zwischen 0 und 100 dargestellt, wobei ein höherer Wert eine bessere Lesbarkeit bedeutet. Die Formel berechnet die 
+Lesbarkeit basierend auf der durchschnittlichen Satzlänge und der durchschnittlichen Silbenanzahl pro Wort. Kürzere Sätze 
+und weniger Silben pro Wort führen zu einem höheren Score und damit zu besserer Lesbarkeit.
+Ursprünglich wurde die Formel von Rudolf Flesch in den 1940er Jahren entwickelt, um Zeitungen leichter lesbar zu machen. 
+Heute wird der Score für die Bewertung und Optimierung von Texten, insbesondere im Online-Marketing und bei 
+Webinhalten, verwendet."
+Wir werden aus diesem Score einen Report erstellen und unseren UserInnen zur Verfügung stellen.
+Siehe hierzu den python Code in Moodle als Beispiel zur praktischen Umsetzung.
+Mit dieser ersten Inference-Pipeline ist unser MVP abgebildet, ohne dass wir ein Modell trainieren mussten und wir können 
+direkt Schlussfolgerungen aus den Ergebnissen ziehen
+
+Aufgabe:
+Entwickelt nun in Python eure eigene minimale inference Pipeline mit der Hilfestellung aus der theoretischen Herleitung der 
+Fallstudie und der praktischen Umsetzung in Form des Python Codes. Legt besonderen Augenmerk auf eine sinnvolle 
+Aufarbeitung und Reduktion der Daten, sowie eine belastbare Heuristik. Diese müsst ihr im Zweifel durch Recherchearbeit und 
+Fachwissen in der betroffenen Domäne zunächst erarbeiten.
+Wichtig: Die Grundfunktion des MVP muss hier bereits abgebildet werden, von Anfang bis Ende! Nur so können wir anschließend 
+bottlenecks und Arbeitsschwerpunkte ableiten!
+Ziel dieser Aufgabe ist die Erstellung eines Gerüsts für die Inference-Pipeline. Verwendet leere Methoden und haltet Heuristiken in 
+Kommentaren fest. Die tatsächliche Umsetzung werdet ihr in den Gruppen außerhalb der Vorlesungszeit abschließen.

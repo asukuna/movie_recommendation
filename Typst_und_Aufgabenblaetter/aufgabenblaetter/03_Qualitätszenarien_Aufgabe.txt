@@ -1,0 +1,14 @@
+Aufgabe Qualitätsanforderungen
+Erstellt mit eurem Team einen Quality Tree mit mind. 5 Qualitätsszenarien. Hierzu soll eine Tabelle mit den
+beschriebenen Qualitätsszenarien mit dem Quality Tree zusammen in der Dokumentation realisiert werden. Also Vorlage
+könnt ihr zum einen die entsprechende Iso Norm:
+ISO 25000: https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
+Und das Dokumentationsbeispiel„Dokchess":
+https://www.dokchess.de
+verwenden. Ziel ist es, 3 Qualiätsszenarien zu priorisieren, die eng mit dem Produktziel zusammenhängen und von hoher
+Relevanz sind. Stellt euch immer die Frage, was der/die Auftraggeberin mit der projektierten Software erreichen will,
+nicht was das Modell auf technischer Ebene leisten soll!
+Für jedes Qualitätsszenario soll eine kurze Begründung festgehalten werden, wieso dieses Qualitätsszenario wichtig für
+die Erreichung des Produktziels ist und wie die angegebene Metrik vom Produktziel abgeleitet wurde (evt. mit rechnung).
+Umfang für Dokumentation: 3 Seiten, eine mit dem Quality Tree, eine mit den Qualitätsszenarien in tabellarischer Form
+und eine mit den Begründungen

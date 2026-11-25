@@ -1,0 +1,90 @@
+Umgang mit Datensätzen
+In der Forschung und in vielen Machine Learning Kursen wird oft ein starrer Datensatz verwendet, an dem dann benchmarks
+mit verschiedenen Modellen durchgeführt werden, um daran zu optimieren und Performance Metriken zu ermitteln. Es ist
+jedoch wichtig zu verstehen, dass in industriellen Anwendungen die Daten ein Bestandteil des Endprodukts sind, und somit
+auch mitentwickelt werden mussen.
+
+Forschung/Schulungen
+
+Daten
+
+Industrieanwendungen
+
+Daten #1
+
+Modell
+
+Daten #2
+
+Performance
+messen
+
+Performance
+messen
+
+Modell v1
+
+Madell v2
+
+Modlel v3
+
+Daten #3
+
+== > Modelle können nur extrahieren und erlernen, was ihnen in den Daten zur Verfügung gestellt wird. Die
+Optimierung dieser Daten ist ein Großteil der Arbeit von Data Science (Es heißt nicht Model Science),
+
+Mit elnem einfachen Datensatz starten:
+Meistens führen mehr Daten zu einem besseren Modell, jedoch sollte man nicht mit dem größtmöglichen Datensatz starten!
+Zu Beginn sollte man eine kleine, representative Datenmenge wählen, um die Daten schnell und effizient inspizieren zu
+können. Erst wenn man eine Strategie abgeleitet hat, sollte man die Daten skalieren.
+
+Ein genaues Vorgehen und alle Themen zu nennen, die bei der Datenanalyse wichtig sind ist kaum möglich, aber es gibt für
+jeden Datensatz grundlegende Rubriken, wekhe man standardmäßig bei jedem Datensatz betrachten sollte:
+
+Datenformat:
+. Ist der Datensatz bereits im richtigen Format, also beinhaltet er die Inputs und Outputs, die for das Modell benötigt
+werden, oder mussen die Daten noch vorbereitet werden?
+. Fehlen wichtige Features?
+· Wenn der Datensatz schon aufbereitet vorliegt, sollte das durchgefuhrte Preprocessing verstanden werden, um die
+Daten plausibilisieren zu können
+
+Datenqualitât:
+· Schlechte Qualität kann sich zeigen durch:
+. fehlen von Werten bei wichtigen Features
+· Ungenauigkeiten
+. Beschadigte Daten
+· Geschätzter Anteil der plausiblen Daten
+· Sind die Labels strichprobenartig nachvollziehbar und schlussig?
+. Vor allem falsche Lbales sind schadlich und wesentlich gefahrlicher als fehlende Labels!
+
+Datenmenge und Vertellung
+* Haben wir genügend Daten?
+· Sind Klassen unterrepräsentiert?
+
+Beispieļfragen für jede Rubrik:
+
+Qualität
+Sind relevarne Felder leer oder felen
+Features?
+Gibt es potentielle Messtehler?
+
+Format
+Weviele Preprocessing Schritte werden
+bendtigt?
+Kann das Preprocessing auch in der
+produktheen Arwendung durchgefuhrt
+werdere
+
+Menge/Verteilung
+Wievide Datenpunke giot es?
+
+Weviele Datenpunkte pro Klsse? Fehlen
+klawen oder sind sis unterrepraventiørt?
+
+Datenbeschaffung: Aufgabe
+Beantwortet für jede der drei Rubriken für die Datenbeschaffung jeweils 4 selbst erstellte Fragen, die
+für euren Datensatz in Bezug auf die Anforderungen eures Projekts relevant sind. Somit ergeben sich
+12 Fragen zu eurem Datensatz. Beantwortet diese Fragen jeweils in wenigen Sätzen.
+Beschreibt zudem euer Vorgehen bei der Datenbeschaffung analog zum Beispiel in den Theoriefolien,
+indem ihr hierfür dieselbe Struktur (Beschaffung, Grobanalyse, Ziel verfolgen, Entscheidung treffen)
+verwendet. Dieser Teil sollte in eurer Dokumentation 2-3 Seiten einnehmen.

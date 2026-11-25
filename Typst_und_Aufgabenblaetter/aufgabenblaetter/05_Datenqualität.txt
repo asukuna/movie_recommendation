@@ -1,0 +1,63 @@
+Jeder der bisher gezeigten Ansätze benötigt verschiedene ML Modelle, die alle andere Ansprüche an die 
+Datengrundlage stellen. Die Wahl des verwendeten Modells wird also stark von den verfügbaren Daten 
+abhängen.
+==> Datenverfügbarkeit bestimmt oft die Modellauswahl!
+Modelle mit überwachtem Lernansatz verstärken Muster in Daten um damit nützliche Mappings zu erlernen. 
+Sofern der verfügbare Datensatz features beinhaltet, die einen Zusammenhang mit der Zielausgabe haben, ist 
+es einem passenden Modell möglich, davon zu lernen.
+Ein ML Modell kann nur das Lernen, was im Datensatz zur Verfügung steht. Oft sind zu Beginn eines Projekts 
+nicht alle benötigten Daten vorhanden, weshalb die Datenbeschaffung einen großen Anteil der benötigten Zeit 
+in Anspruch nehmen kann. Für die meisten Problemstellungen müssen Daten zunächst gefunden, gesammelt 
+und aufbereitet werden.
+Praxistip: Sollten zu beginn keine passenden Daten verfügbar sein, bietet es sich an, mit "ähnlichen" Daten zu 
+beginnen. Beispiel: Ein Modell soll die Anzahl der LeserInnen für Onlineartikel vorhersagen. Es ist vermutlich 
+schwer einen Datensatz mit Artikeln und dazugehörigen Leserzahlen zu erhalten.
+Man könnte mit den frei verfügbaren Page-Traffic Daten von Wikipediaseiten starten. Diese entsprechen in ihrer 
+Form sehr genau dem gesuchten Datensatz. Die Modellentwicklung könnte mit den freien Daten begonnen 
+werden, und ab der Verfügbarkeit des tatsächlich benötigten Datensatzes mit diesem weiteroptimiert werden.
+Datenverfügbarkeit lässt sich in 4 verschiedene Stufen aufteilen. Die folgende Grafik zeigt unterschiedliche 
+Datenqualitäten bezogen auf die verfügbaren labels. Da Modelle bei supervised Learning nur anhand von 
+gelabelten Daten lernen können, ist die Verfügbarkeit von Labels grundlegende Voraussetzung für ein 
+verlässlich trainiertes Modell. Oft ist das vorgehen bei der Datenbeschaffung iterativ und das MOdell wird 
+gleichzeitg bereits trainiert und getestet.
+Wie erstellt
+man digitale
+W Signaturen? ie richte ich
+mein Email
+Konto ein?
+Wie öffne ich
+meinen
+Browser?
+schlechte Frage
+gute Frage
+durchschn. Frage
+Wie erstellt
+man digitale
+W Signaturen? ie richte ich
+mein Email
+Konto ein?
+Wie öffne ich
+meinen
+Browser?
+0 likes erhalten
+23 likes erhalten
+10 likes erhalten
+ungelabelte Daten 
+zugänglich
+Kein Datensatz 
+verfügbar
+Schwach gelabelte 
+Daten
+Stark gelabelte 
+Daten
+Nutzen Häufigkeit
+Stark gelabelte Daten: Viele Datenpunkte beinhalten den Zielwert, den das Modell vorhersagen soll
+Schwach gelabelte Daten: Die beinhalteten Labels entsprechen nicht der ZIelgröße, lassen aber 
+Rückschlüsse auf sie zu
+Ungelabelte Daten: Es ist ein Datensatz verfügbar oder zugänglich, aber die Datenpunkte sind nicht gelabelt
+Keine Daten: Daten müssen erst noch beschafft werden
+Aufgabenstellung Datenqualität:
+a) Erarbeitet, welche Datenqualität euch zugrunde liegt und beschreibt eure Ausarbeitung.
+b) Besprecht, ob die zugrundeliegende Datenqualität ausreicht: Vor welche Probleme stellt euch die vorhandene Datenqualität?
+Welcher Aufwand steckt hinter einer Erhöhung der Datenqualität und wäre dieser Invest wirtschaftlich?
+Umfang für Dokumentation: 0,5 - 1 Seiten

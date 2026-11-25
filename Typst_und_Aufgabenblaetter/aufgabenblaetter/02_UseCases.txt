@@ -1,0 +1,13 @@
+Aufgabe Use Cases
+a) Erstellt mit eurem Team Use Cases für eure Projekt Idee, um damit die funktionalen Anforderungen herauszuarbeiten und
+festzuhalten. Fasst die einzelnen Prozesschritte eures Programms so kleinteilig wie möglich und so groß wie nötig zusammen.
+Definiert sinnvolle Anfangs- und Endzustände und Akteure. Nehmt als Vorlage folgende Use Case Tabelle:
+Use Case
+Kurzbeschreibung
+Akteure
+Pre-condition
+Standard Pfad
+Post-condition
+Alternative Pfade
+b) Erstellt für eure Use Cases ein Use Case Diagramm als überischt für eure funktionalen Anforderunng
+Umfang für Dokumentation: ca. 2 Seiten (3-5 Use Cases und Diagramm), nur ein rudimentärer alternativer Pfad pro Use Case

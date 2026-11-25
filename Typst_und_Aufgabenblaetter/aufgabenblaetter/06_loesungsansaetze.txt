@@ -1,0 +1,69 @@
+Als erstes sollte sich ein Überblick und ein Lösungsansatz erarbeitet werden. Hierzu muss das beste Framing für den 
+Machine Learning Ansatz gefunden werden. Sobald es ein Produktziel gibt muss eine Entscheidung getroffen werden, 
+welcher Modellierungsansatz gewählt werden soll. Hierzu sollte eine Iteration von Modellauswahl und Datenvalidierung 
+durchlaufen werden.
+Um zunächst verschiedene Ansätze so entdecken um diese dann miteinander vergleichen zu können, kann man sich die 
+beiden Extremlösungen ansehen: End-to-End Framework (nur ein einziges Modell) und eine komplett Manuelle Lösung. 
+Mit diesen beiden Extremfällen lässt sich dann oft eine dritte Zwischenlösung erarbeiten:
+End-to-End Framework:
+Dieser Ansatz stellt die komplexeste Lösung dar, nämlich das Produktziel mit nur einem einzigen Modell zu erreichen:
+schlechte Frage Modell gute Frage
+Dieser Ansatz birgt große Herausforderungen:
+Daten: für unsre Fallstudie müssten Fragepaare mit der gleichen Intention, aber unterschiedlicher Qualität gefunden 
+werden.
+Modell: Modelle, welche Sequenzen mit unterschiedlicher Länge in eine andere Sequenz überführen können (Seq2Seq 
+Modelle) sind aufwändig zu trainieren und zu optimieren.
+Latenz: Seq2Seq Modelle sind langsam und benötigen viele Ressourcen
+Implementierung: Je komplexer die Modelle, desto größer der Implenentierungsaufwand
+Manueller Ansatz: "Being the algorithm":
+Um den anderen Extremfall einer möglichen Lösung abzubilden stellt man sich vor, das Produktziel händisch zu erreichen. Dadurch 
+zwingt man sich, den genauen Ablauf von Input zu Output im Detail zu durchlaufen und bekommt ein viel besseres Gespür für die 
+beste automatisierte Umsetzung.
+Frage für unsere Fallstudie des Frageneditors: wie würden wir Fragen hinsichtlich ihrer Verständlichkeit und der Chance auf eine 
+gute Antwort verbessern?
+Ein guter Ansatz ist oft sich vom Datensatz aus der End-to-End Lösung zu distanzieren und mit Hilfe vom "Stand der Technik" zu 
+definieren, wie (in unserem Fall) eine gut formulierte Frage definiert ist. Hierzu wird eine Recherche benötigt. Ein Ergebnis hierzu 
+würde ähnlich wie folgt aussehen:
+Einfachheit der Prosa: Generell werden Sätze so lange und zu komplex verfasst. Es könnte also für unseren Lösungsansatz 
+Kriterien für Satz- und Wortlänge definiert werden.
+Polarität: Meinungsbehaftete Fragen erhalten in der Regel weniger gute Antworten. Metriken für die Polarität des Satzes 
+gemessen an der Anzahl von Adverbien, Superlativen und die verwendete Interpunktion könnten hierzu definiert werden.
+Strukturelle Besonderheiten: Das Vorhandensein von Grußformeln und Fragezeichen füren zu häufigeren Antworten. Auch 
+hierfür könnten Metriken definiert werden.
+==> kein ML involvierte aber Algorithmus kann sehr schnell implementiert wurden und dient als baseline für den Vergleich 
+mit ML Modellen
+==> Ansatz liefert wichtige Features, welche in ML Ansätzen verwendet werden können
+Mittelweg zwischen den beiden Extremlösungen:
+Wir wollen die Idee aus dem "being the algorithm" Ansatz verwenden um einen einfacheren ML Ansatz zu finden. Wir haben 
+manuell versucht Features zu definieren, welche die Qualität von Fragen vorhersagen könnten. Mit dem folgenden vereinfachten 
+ML Ansatz würde diese Idee umgesetzt werden können. Zunächst wird ein Modell trainiert um Fragen generell als "gut" oder 
+"schlecht " bewerten zu können. Danach wird das trainierte Modell auf Alternativen der Ursprungsfrage angewendet und die 
+Alternative mit dem höchsten Score als Ergebnis präsentiert:
+Frage Modell
+gut
+schlecht
+1
+Frage Modell
+Empfehlung für
+bessere Frage
+2
+Training Schlussfolgerung
+Dieser Ansatz birgt geringere Herausforderungen, verglichen mit dem End-to-End Framework:
+Daten: für unsre Fallstudie müssten lediglich bewertete Fragen gefunden werden, nicht die gleiche Frage in 
+unterschiedlichen Qualitäten. Deutlich einfacher, z.Bsp. über Foren Upvotes.
+Modell: Zwei Anforderungen sind wichtig. Zum einen gute Vorhersage von guten und schlechten Fragen, zum Anderen 
+gute Extrahierbarkeit von Features. Hier gibt es diverse Modell-Möglichkeiten.
+Latenz: Die meisten Text-Klassifizierer sind sehr schnell (random forest, tec.) und mit geringem Ressourcenaufwand zu 
+trainieren
+Implementierung: Im vergleich zu generischer Textgenerierung ist Textklassifizierung einfacher umzusetzen und 
+besser dokumentiert. Die Implementierung ist also deutlich einfacher.
+==>Startet man mit einer menschlichen Heuristik und baut davon ausgehend ein erstes simples Modell, ist dieser 
+erste Ansatz ein sehr guter Startpunkt für die weiteren Entscheidungen bei der Modellwahl!
+
+Aufgabenstellung:
+Findet für euer Projekt 3 Verschiedene Lösungsansätze für den Machine Learning Anteil. Wählt hierfür die beiden Extremlösungen
+"simpel" und "komplex", sowie eine moderate Zwischenlösung. Stellt die Ergebnisse mit einer grafisch visualisierten Pipeline und
+einem Erklärungstext hierzu dar.
+Für den Ansatz der simplen Heuristik soll eine kurze Fachrecherche durchgeführt werden. Hier genügt es, wenn die Regeln in der
+Heuristik professioneller entwickelt sind als durch reines "Laienwissen" möglich.
+In eurer Dokumentation sollte dieser Teil ca. 1-2 Seiten einnehmen.

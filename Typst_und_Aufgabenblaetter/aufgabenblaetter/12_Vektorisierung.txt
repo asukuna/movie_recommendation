@@ -1,0 +1,149 @@
+[3.4, 1.2, ... , 7.1, 2.3]
+Wie kann ich die Regeln
+meines Outlook Postfachs
+automatisiert anpassen?
+Vektorisierung eines Datensatzes
+Vektorisierung eines Datensatzes ist die Umwandlung von Rohdaten in einen Vektor, der diese Daten repräsentiert
+Die folgende Darstellung zeigt die Vektorisierung von einem Text und einer Tabelle mit verschiedenen Datentypen:
+Wie kann ich die Regeln
+meines Outlook Postfachs
+automatisiert anpassen?
+Wie kann ich die Regeln
+meines Outlook Postfachs
+automatisiert anpassen?
+[0.8, 0.3, ... , 4.3, 7.0]
+[1.7, 4.3, ... , 4.6, 4.8]
+Liste mit Vektoren
+Liste mit Fragen
+New grid Kunde Bestellung Menge ... DatumEdeka
+Aldi ... Klopapier
+Spülmittel ... ... ... ...
+...
+... 270
+190
+Montag, 06.10.2025
+Freitag, 26.09.2025
+New grid Kunden_ID Bestell_ID Menge_norm ... Wochentag
+13
+7
+... 0
+1
+... ... ... ...
+...
+... 0.54
+0.38
+0
+4
+[..., ..., ... , ..., ...]
+[7, 1, 0.38 , ..., 4]
+[13, 0, 0.54 ... , 0]
+Liste mit Vektoren
+Numerische Werte
+Datensatz
+Vektorisierung Grundsätze
+==> Bei tabellarischen Daten empfiehlt sich die Normalisierung der einzelnen features von kontinuierlichen und die one-hot 
+   Enkodierung von kategorischen Daten
+==> Bei Text bietet sich ein Zählervektor an, der die Anzahl der einzelnen Wörter in jedem Satz wiedergibt
+Bei der Vektorisierung können wir grundlegend wie folgt vorgehen:
+Kontinuierliche Features: Normierung oder Standardisierung
+Kategorische Features: one-hot encoding (sofern alle Kategorien ähnlich sind)
+Ungleiche kategorische Features (z.Bsp. Wochentage): Vektor mit individuellen Werten
+Komplexe Kategorische features (z.Bsp: Datum): In mehrere Vektoren aufteilen
+Vorhaben: Wir wollen nicht den Text verwenden, um die Fragenscore vorherzusagen, sondern den Tag, Anzahl der Kommentare, 
+und das Erstellungsdatum. Wir würden uns folgenden Datensatz aus den Rohdaten herausschneiden:
+Nun Vektorisieren wir wie oben beschrieben. Zunächst standardisieren wir die numerischen Felder:
+Exkurs: Unterschied Standardisierung und Normierung:
+Normierung bei Verfahren, die abstandsbasiert sind, damit kein Merkmal dominiert (k-Means, k-NN, neuronale Netze)
+Standardisierung bei Gradientenasierten Verfahren (lin. Regression, SVM)
+Kriterium Normalisierung Standardisierung
+Skalierung Auf festen Bereich (z. B. ) Mittelwert = 0, Std-Abweichung = 1
+Datendistribution Unbekannt oder nicht normalverteilt Nahe gaußscher Verteilung
+Empfindlichkeit gegenüber
+Ausreißern
+Höher Geringer
+Empfohlene Algorithmen k-NN, SVM, neuronale Netze Regression, SVM, PCA
+Ziel Gleiche Skala für Abstandsberechnung Gleiche Varianz zur Gewichtsanpassung
+Die Modellperformance hängt je nach Modell stark von der Verteilung der Datenpunkte ab?
+Modelltyp Empfindlichkeit gegenüber Verteilung Anmerkung
+Lineare Modelle (Regression, LDA) Hoch Gehen häufig von normalverteilten Features aus
+Entscheidungsbäume, Random Forest Gering Benötigen keine bestimmte Verteilung
+k-NN, SVM (Distanzbasiert) Mittel bis hoch Profitieren von gleichmäßig skalierten
+Verteilungen
+Neuronale Netze Mittel Stabiler bei Normalisierung, sensibel bei
+unbalancierten Klassen
+Bayes-Modelle Sehr hoch Explizit auf Wahrscheinlichkeitsverteilungen
+angewiesen
+Als nächstes vektorisieren wir die Datumsfelder:
+Wir können zum Beispiel Jahr, Monat, Tag und Stunde des Posts wählen
+Jeder dieser Werte ist ein möglicher numerischer Wert, den das Modell nutzen könnte:
+Als nächstes vektorisieren wir die Tags:
+Wir suchen alle tags, die mehr als 500 mal vorkommen im Datensatz
+Für diese Tags erstellen wir eine one-hot codierung für jeden Datenpunkt:
+Gesamter Datensatz:
+Nun haben wir einen komplett vektorisierten Datensatz, den wir als Eingabe für unser Modell nutzen können:
+==> Wir können diesen Datensatz nun für das Clustering oder ein überwacht lernendes ML Modell nutzen!
+WICHTIG:
+Parameter für Vektorisierung speichern, um diese dann auch so auf das Validierungs-Set anzuwenden
+Würden Vektorisierungsparameter anhand von Trainings- und Validierungsdaten oder für jedes Set separat ermittelt werden, 
+so würde das in einer Verzerrung der Modellperformance resultieren
+Wie können wir Text sinnvoll vektorisieren?
+Die einfachste Methode ist ein Zählvektor zu benutzen (Wort-Äquivalent einer one-hot Encoding Strategie):
+Ein Vokabular aus den verschiedenen Wörtern erstellen, die im Datensatz vorkommen
+Jedes Wort einem Index von 0 bis Anzahl vorkommender Wörter
+Jeden Satz als Liste mit der Länge des Indexes repräsentieren
+Anzahl der jeweils vorkommenden Wörter im Index hinterlegen
+Diese Methode ignoriert die Wortreihenfolge, deshalb auch "bag of words" genannt.
+1.
+2.
+3.
+4.
+Eingabetext
+Satz1
+...
+Satz 1049
+Maria hat ein schönes Haus.
+...
+Peter ist ein wenig traurig und hätte gerne ein schönes Haus.
+Wort Index Maria hat ein schönes Haus ... hätte gerne nicht Morgen deswegen
+Satz 1
+...
+Satz 1049
+1 1 1 1 1 ... 0 0 0 0 0
+... ... ... ... ... ... ... ... ... ... ...
+0 0 2 1 1 1 1 0 0 0
+==> Bag of Words ist nur eine von vielen Methoden, Text zu vektorisieren!
+Beispiele für Text Vektorisierungsmethoden
+TF-IDF (Normierte Version eines Bag od Words Ansatzes):  Vortrainierte Worteinbettung mit spacy:
+Das gewählte Verfahren zur Vektorisierung beeinflusst die Topografie der Textrepräsentation durch die Vektoren.
+Word Embeddings sind eine Methode der Textvektorisierung, bei der Wörter als numerische Vektoren in einem mehrdimensionalen 
+Raum dargestellt werden. Ziel ist es, die bedeutungsbezogenen (semantischen) und grammatikalischen (syntaktischen) Beziehungen 
+zwischen Wörtern in einer Form zu erfassen, die maschinelles Lernen versteht.
+Konzept Word embedding:
+Ein Word Embedding ordnet jedem Wort einen Vektor aus einem Raum mit n Dimensionen zu.
+ Dabei gilt:
+ähnliche Wörter liegen räumlich nahe beieinander,
+unähnliche Wörter liegen weiter auseinander.
+Beispiel:
+ „König“ und „Königin“ haben ähnliche Vektoren, mit einer Relation ähnlich zu „Mann“ und „Frau“.
+ Das kann mathematisch sogar durch Vektorarithmetik ausgedrückt werden:
+ Konig−Mann+Frau≈Konigin
+Klassische Vektorisierungsverfahren wie Bag-of-Words oder TF‑IDF erfassen nur Wortfrequenzen, aber keinen Kontext 
+oder Bedeutungsähnlichkeiten.
+ Word Embeddings lösen dieses Problem:
+Sie erzeugen dichte, niedrigdimensionale Repräsentationen (z.B. 100–300 Dimensionen statt Zehntausende),
+sie lernen semantische Strukturen direkt aus Textkorpora,
+sie reduzieren Sparsität und Dimensionalität deutlich
+Typische Verfahren
+Word2Vec (Mikolov, 2013): trainiert auf Nachbarschaftswörtern („context window“), lernt semantische Beziehungen.
+fastText (Facebook): berücksichtigt auch Wortbestandteile → versteht unbekannte Wörter besser.
+BERT/ELMo: sogenannte contextual embeddings, bei denen der Vektor eines Wortes vom Satzkontext abhängt („Bank“ 
+als Finanzinstitut vs. Sitzbank).
+Word Embeddings sind die Lernbasis moderner NLP-Modelle
+
+Aufgabe zur Vektorisierung:
+Vektorisiert nun euren Datensatz, oder sinnvolle Teile davon. Geht hierbei analog zu den Beispielen aus der Fallstudie vor. 
+Verwendet die für euren Datentyp und die geplante Modellierung passenden Methoden.
+Prüft vorab statistisch eurer Daten und klärt, ob sich gewisse Modelle aufgrund der Datendistribution und Datendichte der 
+betrachteten Features sinnhaft anwenden lassen, oder ob ihr weitere Features finden müsst.
+Dokumentiert euer Vorgehen und begründet eure Entscheidungen! Diese Aufgabe sollte ca. 2 Seiten in eurer Dokumentation 
+befüllen.

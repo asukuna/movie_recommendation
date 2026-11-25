@@ -1,0 +1,29 @@
+Aufgabe:
+1.Erstellt mir eurem Team eine Projektbeschreibung in Stichwortartigen Sätzen mit Hilfe der zur Verfügung 
+gestellten Folie.
+2.Zusätzlich zur Projektbeschreibung sollen folgende Fragen geklärt und schriftlich festgehalten werden:
+a.Szenario (in welcher Form arbeitet euer Team zusammen, wo seid ihr angestellt, wie groß ist die Firma, etc.)
+b.Rahmenbedingungen (Welche Einschränkungen gibt es, welche Besonderheiten gibt es?)
+3.Klärt und haltet fest, welches Minimale Produkt (MVP) ihr am Ende der Praxisphase in der 
+Präsentationsprüfung vorstellen wollt. Versucht hier die kleinstmögliche, funktionale Umsetzung zu wählen.Allgemeine Anforderungen in Ausformulierten Punkten definieren. Die folgenden Themen
+sollten in jedem beschriebenen Prozessschritt definiert werden:
+Geplante Funktionen
+Involvierte Akteure
+Komponenten (=Bausteine der Software)
+Daten und deren Strukturen
+Beschränkungen (optional)
+Umgang mit Problemfällen (optional)
+Alles, was zum Grundsätzlichen Verständnis wichtig ist
+Ein Beispiel für einige ausformulierte Prozessschritte::
+Beispiel: Bibliothek-Informationssystem
+1. Jeder Kunde hat eine einzigartige Kundenkarte, solange er im System ist
+2. Die Bibliothek muss Name, Adresse, Telefonnummer und Kartennummer von jedem
+Kunden wissen
+3. Die Bibliothek muss jederzeit die ausgeliehenen Items des Kunden, deren
+Rückkabefrist und überfällige Rückgaben einsehen können
+4. ein Kunde kann Bücher oder Audio/Video Materialien auschecken
+5. Alle items werden für 3 Wochen ausgecheckt
+6. Die Überziehungsgebühr beträgt 0,10€ pro Tag, jedoch maximal den Item-Preis
+7. ein Kunde kann ein nicht verfügbares Item bestellen
+Jeder Punkt bezeichnet eine Funktion und beinhaltet
+verschiedene Akteure, Komponenten, Daten, etc.

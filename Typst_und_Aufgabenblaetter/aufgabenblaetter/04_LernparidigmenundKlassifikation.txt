@@ -1,0 +1,225 @@
+ML Lernparadigmen
+Algorithmischer Ansatz:
+Bei Bilderkennung nicht umsetzbar
+Kein unvorhergesehenes Verhalten
+Ergebnisse sind klar durch 
+deterministische Regeln vorgegeben
+Machine Learning Ansatz:
+Viele Probleme sind nicht deterministisch 
+zu lösen oder zu aufwändig
+Bei komplexen Aufgaben schneller, teilw. 
+präziser
+=> Algorithmischen Ansatz wählen, sofern abbildbar (Anzahl der Regeln)
+=> ML eröffnet viele Möglichkeiten, aber bei kritischen Anwendungen kann 
+Ungenauigkeit zum Problem werden
+=> Immer abwägen, ob ML nötig und sinnvoll!
+Möglichkeiten ML:
+Manche Anforderungen können von ML besser erledigt werden als 
+von Menschen (Tumorerkennung, Go spielen)
+Direktes Lernen von Datensätzen macht es sehr universell einsetzbar, 
+jedoch ist dadurch eine Erfolgsabschätzung schwierig
+Auswahl des ML Ansatzes:
+Stets offen sein, ob ML für die Anwendung nötig ist
+Anwendungsbezogenheit statt ML Bewertung im "Vakuum"
+2 wichtige Schritte:
+Produktziel im ML Paradigma framen
+ML Durchführbarkeit evaluieren
+=> Hierfür sind zwei Kernaspekte von ML wichtig: Modelle und Daten
+
+Die Einteilung von KI-Aufgaben kann aus zwei wichtigen Perspektiven 
+betrachtet werden:
+Nach Art der verfügbaren Daten (Lernparadigma):
+Supervised Learning: Arbeitet mit gelabelten Daten
+Unsupervised Learning: Arbeitet mit ungelabelten Daten
+Semi-supervised Learning: Kombiniert gelabelte und 
+ungelabelte Daten
+Reinforcement Learning: Lernt durch Interaktion mit einer 
+Umgebung
+Nach Art der Ein- und Ausgaben (Aufgabentyp):
+Regression: Vorhersage kontinuierlicher Werte
+Klassifikation/Kategorisierung: Zuordnung zu diskreten 
+Kategorien
+Clustering: Gruppierung ähnlicher Datenpunkte
+Wissensextraktion: Gewinnung strukturierter Informationen 
+aus unstrukturierten Daten
+
+Supervised Learning: Lernen mit Beispielen
+Definition: Algorithmen lernen durch gelabelte Trainingsdaten, Muster zu erkennen und 
+vorherzusagen.
+Kernelemente:
+Eingabedaten (X): Features der zu analysierenden Objekte
+Ausgabedaten (Y): Korrekte Antworten/Labels für jedes Beispiel
+Trainingsdaten: Sammlung von Input-Output-Paaren (X, Y)
+Modell: Mathematische Funktion zur Abbildung von X auf Y
+Verlustfunktion: Misst Fehler zwischen Vorhersage und tatsächlichem Wert
+Hauptaufgabentypen:
+Klassifikation: Zuordnung zu diskreten Kategorien (z.B. Spam-Erkennung)
+Regression: Vorhersage kontinuierlicher Werte (z.B. Hauspreise)
+Prozess:
+Sammlung gelabelter Daten für Training und Test
+Training durch Minimierung der Verlustfunktion
+Validierung auf separaten Testdaten
+Anwendung auf neue, ungesehene Daten
+Algorithmen:
+Lineare Regression, Logistische Regression, Entscheidungsbäume, Neuronale Netze
+
+Unsupervised Learning: Entdecken ohne Vorgaben
+Definition: Algorithmen finden selbstständig Muster und Strukturen in ungelabelten Daten.
+Kernelemente:
+Eingabedaten (X): Features ohne zugehörige Labels
+Keine Ausgabedaten (Y): Keine vordefinierten korrekten Antworten
+Ähnlichkeitsmaße: Bestimmen Beziehungen zwischen Datenpunkten
+Modell: Entdeckt Strukturen oder Gruppierungen in Daten
+Zielfunktion: Optimiert interne Datenrepräsentation statt Vorhersagegenauigkeit
+Hauptaufgabentypen:
+Clustering: Gruppierung ähnlicher Datenpunkte (z.B. Kundensegmentierung)
+Dimensionsreduktion: Komprimierung von Daten (z.B. PCA)
+Prozess:
+Sammlung ungelabelter Daten
+Anwendung von Algorithmen zur Mustererkennung
+Interpretation der gefundenen Strukturen
+Validierung durch Domänenexperten oder indirekte Metriken
+Algorithmen:
+K-Means, DBSCAN, Hierarchisches Clustering, Autoencoders, t-SNE
+
+Semi-Supervised Learning: Das Beste aus beiden Welten
+Definition: Kombination weniger gelabelter mit vielen ungelabelten Daten für effizientes Lernen.
+Kernelemente:
+Kleine Menge gelabelter Daten (X, Y)
+Große Menge ungelabelter Daten (nur X)
+Annahmen: Ähnliche Daten haben ähnliche Labels
+Modell: Nutzt beide Datentypen für bessere Generalisierung
+Pseudo-Labeling: Generiert Labels für ungelabelte Daten
+Hauptaufgabentypen:
+Verbesserte Klassifikation mit begrenzten Labels
+Domänenadaption bei unterschiedlichen Datenverteilungen
+Prozess:
+Training mit gelabelten Daten
+Erweiterung durch ungelabelte Daten mittels spezieller Techniken
+Iterative Verbesserung des Modells
+Evaluation auf separatem Testset
+Algorithmen:
+Self-Training, Co-Training, Graph-basierte Methoden, FixMatch, MixMatch
+
+Reinforcement Learning: Lernen durch Interaktion
+Definition: Agent lernt optimale Aktionen durch Interaktion mit einer Umgebung.
+Kernelemente:
+Agent: Entscheidungsträger, der Aktionen ausführt
+Umgebung: Reagiert auf Aktionen mit neuen Zuständen
+Belohnungen: Feedback-Signal für ausgeführte Aktionen
+Policy: Strategie des Agenten zur Aktionsauswahl
+Wertfunktion: Schätzt zukünftige Belohnungen für Zustände/Aktionen
+Hauptaufgabentypen:
+Sequentielle Entscheidungsfindung (z.B. Robotersteuerung)
+Optimierung von Strategien (z.B. Spielen)
+Prozess:
+Agent beobachtet aktuellen Zustand
+Agent wählt und führt Aktion aus
+Umgebung liefert Belohnung und neuen Zustand
+Agent aktualisiert seine Strategie
+Algorithmen:
+Q-Learning, Deep Q-Networks, Policy Gradient, PPO, A3C
+ML Klassifikation:Klassifizierung und Regression sind technisch unterschiedliche Aufgabentypen für ML:
+Klassifizierung: Datenpunkte zwischen zwei oder mehr Gruppen unterscheiden
+Regression: Datenpunkten einen variablen Wert einer kontinuierlichen Skala zuweisen
+Warum zusammenfassen?
+Bei einer Klassifizierung werden (meistens) Wahrscheinlichkeitswerte ermittelt um darauf basierend 
+die Zuweisung des Datenpunkts zu einer Gruppe durchzuführen. Klassifizierung kann deshalb von 
+einer übergeordneten Betrachtung als Regression auf Wahrscheinlichkeitswerte betrachtet werden.
+Normalerweise werden individuelle Datenpunkte bewertet:
+Spamfilter, der einzelne Emails als valide oder als spam bewertet
+Fraud Detection Systeme, die Benutzer als vertrauenswürdig oder nicht bewerten
+Visuelle Radiologiemodelle, die Knochen als gesund oder gebrochen bewerten
+"Rick & Morty ist die beste Serie seit langem!"
+Sentiment Mediale Kategorie
+Positiv Negativ Buch Film Serie
+Beispiel Klassifizierung: Beispiel Regression:
+"Das Haus hat 160m² Wohnfläche, 4 Zimmer und liegt
+in der PLZ 79100."
+Kaufpreis
+460.000 €
+Wissensextraktion aus unstrukturierten Daten:
+Unterschiedliche Datengrundlagen
+Wissensextraktion aus unstrukturierten Daten filtert gewünschte Items aus den unstrukturierten Daten. Aus 
+Sätzen werden zum Beispiel Wörter bestimmten Kategorien zugeordnet oder aus Bildern werden Flächen von 
+Interesse erkannt und ebenfalls kategorisiert.
+Modell
+Modell
+strukturiert (Tabellen, Dataframes, ...) unstrukturiert (Text, Bild, etc.)
+Modell
+"Leningrad Cowboys ist ein unbekannter, aber unterhaltsamer Film."
+Titel Mediale Kategorie
+Extraktion von Informationen aus Sätzen und Bildern: 
+Bounding Box und Segmentierungsmaske im Vergleich
+Schritt 1: Bild der Yogapose Schritt 2: Positionsanalyse (ML)
+Auswertung:
+Kategorie Füße:
+Fuß 1 => (5,1)
+Fuß 2 => (13,1)
+Kategorie Hände:
+Hand 1 => (12,8)
+Hand 2 => NaN
+Kategorie Gelenke
+Knie 1 => (6,3)
+Knie 2 => (9,1)
+Kategorie Ellenbogen:
+...
+Schritt 3: Auswertung Pose (ML)
+Modellausgabe (Text):
+"Das ist die Yogapose 
+Low Lunge."
+Auswertung:
+Prediction der erkannten 
+einer Pose auf Grundlage 
+der analysierten 
+Positionen
+Vorbereitung:
+Segmentierung des 
+Bildes
+Die catalog organization im Machine Learning ist ein Prozess, bei dem verschiedene Modelle und Algorithmen 
+(insbesondere Klassifikation, Clustering, NLP) orchestriert werden, um Datenbestände intelligent zu organisieren und 
+zugänglich zu machen
+Bisherige Modelle waren auf die Erzeugung von einem Output bezogen auf einen erwarteten Input konditioniert. 
+Datenkataloge konzentrieren sich auf das Herausarbeiten von relevanten Items. Sie erzeugen ein Ergebnisset bezogen 
+auf einen gegebenen Input (eingegebener String, hochgeladenes Bild, gesprochener Satz, ...), oder erzeugen diesen 
+proaktiv (Playlist Vorschläge, empfohlene Filme, ...).
+Du hast gerade Rick & Morty angesehen?
+Für die UserIn vorgeschlagene Serien:
+gem. Attribute:
+- SciFi
+- Humor
+- Alter Wissenschaftler
+Futurama
+gem. Attribute:
+- SciFi
+- Humor
+- verstörend
+Solar Opposites
+gem. Attribute:
+- Humor
+- Gesellschaftskritik
+- Gewalt und Vulgarismen
+South Park
+Im gezeigten Beispiel bietet das ML Modell auf Basis von bei Serien hinterlegten Attributen zu einer angesehenen Serie 
+passende Vorschläge an.
+Die Vorschläge werden meistens auf Basis des bisherigen User Verhaltens erstellt (collaborative recommendation). Wie 
+im Beispiel können sie aber auch auf Basis der Item Attribute erstellt werden (content-based recommendation).
+Generative Ansätze im ML fokussieren sich auf die Erzeugung von Daten basierend auf dem 
+gegebenen Input. Sie sind nicht gedacht für das Kategorisieren, Bewerten, die Extraktion von 
+Informationen oder die Organisation von Daten.
+Die Ausgaben von für diesen Ansatz verwendete Modelle haben in der Regel eine große Bandbreite  
+und Ergebnisse können für den gleichen Input variieren. Die Ausgaben sind generell weniger 
+eingeschränkt als bei anderen Ansätzen. Das macht deren EInsatz in produktiven Anwendungen 
+riskanter. Oft werden generative Ansätze zum trainieren oder für Anwendungen eingesetzt, die 
+gegenüber den Modellausgaben toleranter sind (Übersetzung, Bilderzeugung, Chatbot, ...).
+zudem ist der Einsatz von generativen Ansätzen in der Regel sehr leistungsintesiv, was sich direkt auf 
+die Skalierbarkeit und auch die Wirtschaftlichkeit der geplanten Anwendung auswirkt.
+==> generative Ansätze sollten nur verwendet werden, sofern kein simplerer Ansatz das 
+gegebene Problem lösen kann
+AUFGABE:
+Aufgaben hierzu:
+a) Welches Lernparadigma soll in eurem Projekt angewandt werden?
+b) Welcher Aufgabentyp wird in eurer Anwendung behandelt?
+Schreibt hierzu jeweils einen kurzen Absatz mit Begründung für eure
+Dokumentation
+Umfang für Dokumentation: 0,5 Seiten

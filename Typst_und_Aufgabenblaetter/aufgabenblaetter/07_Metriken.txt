@@ -1,0 +1,123 @@
+Um verschiedene Lösungsansätze miteinander vergleichen zu können, müssen passende Metriken entwickelt werden. Hierzu 
+werden die benötigten Metriken in vier verschiedene Kategorien aufgeteilt:
+Business Performance
+Stellen die wichtigsten Metriken dar, da sie die einzigen sind die wirklich von Bedeutung sind und das Produktziel 
+repräsentieren. Es empfiehlt sich, "Leitplanken"- kombiniert mit Zielmetriken zu verwenden, um Etwaige Verschlechterungen 
+zu erkennen. Die sogenannten Produktmetriken stellen den Erfolg des Gesamtprodukts dar.
+Model Performance
+Metriken hierfür stellen den Erfolg des Modells, entkoppelt vom Produkterfolg dar. Für die meisten Onlineprodukte bietet 
+sich das Verhältnis der Userzahl, die den Modelloutput verwenden, zur maximal möglichen Userzahl an.
+Da diese Metrik während der Entwicklung nicht verfügbar ist, benötigt man sogenannte "offline" oder "Modell" Metriken. Eine 
+gute Offlinemetrik lässt sich ohne Userinteraktion erfassen und ist eng mit dem Produktziel verbunden.
+Es ist wichtig zu verstehen, dass die übergeordneten Produktziele mit verschiedenen Modellansätzen werden können. Die Die 
+Änderung eines Ansatzes kann oft die Erreichbarkeit einer Modellperformance erleichtern, welche für die Erfüllung eines 
+Produktziels notwendig ist.
+Auch können Anpassungen an der Realisierung des Produktes vorgenommen werden, um bei gleichem Mehrwert die 
+Anforderungen an die Modellierung zu veringern:
+Interfaceänderung, um Ergebnisse mit geringen Wahrscheinlichkeiten nicht anzeigen zu müssen
+Mehrere Outputs anzeigen, nicht nur das Top Ergebnis um die Wahrscheinlichkeit für einen Click Through zu erhöhen
+Kommunikation über Entwicklungsstand an User mit Feedbackmöglichkeit um Daten zu sammeln
+Beispiel:
+Das Produktziel verlangt die Ausgabe von hilfreichen Vorschläge für User eines Onlineshops, sobald sie beginnen, etwas in 
+die Suchleiste schreiben. Die Die Produktmetrik ist CTR, also wie oft der/die UserIn auf einen Vorschlag klickt. Das Produktziel 
+könnte mir zwei verschiedenen Modellansätzen erreicht werden:
+Schrank für B...
+Modell
+Schrank für Bettdecken
+Schrank für Badesachen
+1
+Satzvervollständigung Automatisches Tagging
+Zum einen könnte das Produktziel "hilfreiche Vorschläge" über eine Satzvervollständigung realisiert werden. Hierzu würde 
+als Modellmetrik eine enorm hohe Vorhersagegenauigkeit benötigt werden, um die CTR zu verbessern (ein falsches Wort im 
+Satz würde die Ausgabe nutzlos machen).
+Wählt man den Ansatz, das Produktziel über automatisches Tagging zu erreichen, würde man die Modellmetrik Genauigkeit 
+im Bezug auf wenige Kategorien im Vergleich zu allen deutschen Wörtern anwenden. Diese Metrik würde sich aufgrund der 
+deutlich geringeren Anzahl von verfügbaren Kategorien als Wörter deutlich einfacher optimieren lassen. Darüber hinaus 
+muss der Ansatz nur eine Kategorie und nicht mehrere Wörter korrekt vorhersagen, was die Erhöhung der CTR ebenfalls 
+vereinfacht.
+==> Auch wenn der Modellierungsansatz zu einem Produktziel passt, kann es hilfreich sein mehrere Modellmetriken zu 
+untersuchen, welche eventuell besser mit den Produktmetriken korrelieren.
+Schrank für Bücher
+Usereingabe
+Mögliche Sätze:
+Schrank für B...
+Modell
+Aufbewahrung
+Wohnzimmer
+2
+Schränke
+Usereingabe Mögliche Tags 
+(Schlagworte):
+Freshness / Distribution Shift
+Modell, die mit überwachtem Training arbeiten, ziehen ihre Stärken aus dem Anlernen von Korrelationen zwischen 
+Eingabe-Features und Vorhersage-Zielen. Das bedeutet, dass diese Modelle abhängig davon sind, dass sie mit Daten 
+trainiert wurden, die den späteren Eingabedaten ähneln. Wenn sich also über die Zeit die Art der Eingabedaten ändert, so 
+gibt es einen "Shift" zum zuvor trainierten Modell.
+Für die Bewertung von verschiedenen Modellierungsansätzen sollte betrachtet werden, wie schwer es ist den 
+entsprechenden Ansatz "Fresh" zu halten.
+Geschwindigkeit
+Die zur Erreichung des Produktziels benötigte Geschwindigkeit der Bereitstellung einer Vorhersage hängt vollkommen vom 
+Use Case ab. Manchmal sind Sekunden bereits zu viel, manchmal genügen 24 Stunden.
+Für die vier verschiedenen Kategorien der zuvor vorgestellten Metriken, wählen wir nun passende Größen für unsere 
+Fallstudie des ML Editors aus:
+Business Performance:
+Hier bietet sich als Produktmetrik die CTR an, da diese den Erfolg und den Mehrwert für die User widerspiegelt
+Model Performance:
+In unserem Fall wird durch das Produkt eine Schreibunterstützung realisiert. Bei Klassifikationsmodellen sind die beiden 
+Metriken "precision" und "recall" zentrale Bewertungskriterien
+precision = TP / (TP + FP): Verhältnis von korrekt positiv bewerteten Instanzen zu allen positiv bewerteten Instanzen
+recall = TP / (TP + FN): Verhältnis von korrekt positiv bewerteten Instanzen zur Gesamtzahl der positiven Instanzen im 
+Datensatz
+Freshness
+Die Kadenz, mit der sich die Datengrundlage für die Bewertung einer guten und schlechten Frage ändert ist nicht allzu hoch, 
+wir nehmen hier 1 Jahr an. Dies hängt aber auch von der Domäne ab, in der wir entwickeln. Im mathematischen Kontext wäre 
+der Zeitraum beispielsweise größer als bei Fragen über Mode oder Musik Trends.
+Geschwindigkeit
+Abbhängig vom Lösungsansatz: Eine interaktive Lösung, die sich bei jeder Buchstabeneingabe ändert müsste ein wesentlich 
+schnelleres Modell zur Verfügung haben (<1s), als eine Eingabebox mit Submit-Button (<3s).
+1. Klassifikation (z. B. Betrugserkennung, Spamfilter)
+Genauigkeit (Accuracy): Anteil korrekt klassifizierter Beispiele an allen Beispielen.
+Formel: Genauigkeit=(TP+TN) / (TP+FP+FN+TN)
+Wann?: Gut geeignet für ausgewogene Datensätze mit ähnlicher Klassenverteilung. Minderheitsklassen vernachlässigt!
+Präzision (Precision): Anteil tatsächlich relevanter Positiver unter allen als positiv vorhergesagten Fällen.
+Formel: Präzision= TP / (TP+FP)
+Wann?: Wichtig, wenn es kritisch ist, falsch positive Ergebnisse zu vermeiden, z.Bsp. Betrugserkennung
+Recall (Sensitivität, Trefferquote): Anteil erfasster Positiver unter allen tatsächlich positiven Fällen.
+Formel: Recall=TP / (TP+FN)
+Wann?: Relevant, wenn es wichtig ist, möglichst keine positiven Fälle zu verpassen, z.Bsp. bei der Krankheitsdiagnose
+F1-Score: Harmonisches Mittel aus Präzision und Recall. Besonders nützlich bei Klassenungleichgewicht.
+Formel: F1=2⋅ (Präzision⋅Recall) / (Präzision+Recall)
+Wann: Sinnvoll, wenn ein ausgewogenes Verhältnis zwischen beiden gewünscht ist, besonders bei unausgewogenen Klassen 
+oder wenn weder Präzision noch Rückruf alleine ausreichend sind.
+Kreuzentropie (Cross-Entropy / Log-Loss): Verlustfunktion für Klassifizierungsaufgaben, insbesondere bei Modellen wie 
+neuronalen Netzen. Misst die durchschnittliche "Unähnlichkeit" zwischen den tatsächlichen und den vorhergesagten 
+Wahrscheinlichkeitsverteilungen.
+Formel:
+p(i): tatsächliche Verteilung (oft One-Hot codiert), q(i): vorhergesagte Wahrscheinlichkeitsverteilung des Modells, n: Anzahl der  
+Klassen, Werte nahe 0 sind besser (perfekte Vorhersagen: Log-Loss = 0)
+TP: True Positive, FP: False Positive, TN: True Negative, FN: False Negative
+Business Performance Metriken:
+Conversion Rate: Prozentsatz der Nutzer, die nach einem Klick eine definierten Aktion (z.B. Kauf, Anmeldung) 
+ausführen. Diese Metrik misst den tatsächlichen Geschäftserfolg hinter der Interaktion.
+Engagement Time / Session Duration: Die Zeit, die Nutzer mit der ML-gestützten Anwendung verbringen, zeigt, wie 
+wertvoll die Inhalte für sie sind.
+Bounce Rate: Anteil der Nutzer, die nach der Interaktion sofort abspringen; eine niedrige Bounce Rate deutet auf 
+relevante Empfehlungen hin.
+Repeat Engagement Rate: Anteil der Nutzer, die wiederkehrend interagieren und somit langfristige Relevanz der MLAnwendung anzeigen.
+Customer Lifetime Value (CLV): Erwarteter Gesamtwert eines Kunden während der gesamten Geschäftsbeziehung, 
+der durch ML optimierte Bindung erhöht werden kann.
+Retention Rate: Anteil der Kunden, die über eine bestimmte Zeit gehalten werden; zeigt Kundenbindung und 
+nachhaltigen Erfolg.
+Revenue Impact: Direkte Umsatzsteigerung durch ML-gestützte Maßnahmen.
+Adoption und Sales Metrics: z.B. wie viele Nutzer nach einer Empfehlung tatsächlich kaufen oder eine Plattformfunktion 
+nutzen.
+Click-Through-Rate: Wird im ML Kontext am häufigsten verwendet und beschreibt das Verhältnis zwischen der Anzahl 
+der tatsächlichen Benutzungen eines features (Klicks) und der Anzahl der Impressionen, also wie oft dieses feature dem 
+User angezeigt wurde. Sie wird in Prozent ausgedrückt und berechnet sich nach der Formel
+Aufgabe:
+Schreibt auf, welche Metriken für die vier Kategorien (Business Performance, Modell Performance, Freshness und
+Geschwindigkeit) für euer Projekt sinnvoll wären. Wählt für die Modellperformance mindestens 3 Metriken. Haltet zudem fest,
+welche Größenordnungen für die einzelnen Metriken als Erreichungsziel sinnvoll wären.
+Begründet eure Wahl der Metrik und beschreibt, wie ihr die Größenordnung der jeweiligen Metrik hergeleitet habt und
+bezieht euch hierbei stehts auf euer Produktziel und eure Qualitätsszenarien!
+In eurer Dokumentation sollte dieser Teil ca. 2 Seiten einnehmen.
